@@ -1,0 +1,30 @@
+﻿@model CookingHeaven.Models.Retete
+
+@{
+    ViewData["Title"] = "Detalii";
+}
+
+<h1>Vizualizarea retetei</h1>
+
+<div>
+    <h4>Retete</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RetetaNume)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RetetaNume)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RetetaDescriere)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RetetaDescriere)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Editeaza</a> |
+    <a asp-action="Index">Inapoi la lista</a>
+</div>
