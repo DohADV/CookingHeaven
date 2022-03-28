@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookingHeaven.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220327162544_bruh")]
-    partial class bruh
+    [Migration("20220328082114_setup")]
+    partial class setup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookingHeaven.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220327161041_secondsetup")]
-    partial class secondsetup
+    [Migration("20220328082049_initialsetup")]
+    partial class initialsetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,13 +28,10 @@ namespace CookingHeaven.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("RetetaIngrediente")
+                    b.Property<string>("RetetaDescriere")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RetetaNume")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RetetaPreparare")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
