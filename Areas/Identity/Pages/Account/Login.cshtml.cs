@@ -96,7 +96,7 @@ namespace CookingHeaven.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Ai gresit parola sau email-ul!");
                     return Page();
                 }
             }

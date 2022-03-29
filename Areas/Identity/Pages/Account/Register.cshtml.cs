@@ -55,12 +55,31 @@ namespace CookingHeaven.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
+            public interface IPasswordHasher<TUser> where TUser : class
+            {
+                string HashPassword(TUser user, string Password);
+
+                PasswordVerificationResult VerifyHashedPassword(
+                    TUser user, string hashedPassword, string providedPassword);
+            }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "Parola ")]
+            [Compare("Password", ErrorMessage = "Parola nu este aceeasi cu cea scrisa prima oara!")]
             public string ConfirmPassword { get; set; }
         }
+        static string sha256(string Password)
+        {
+            var crypt = new System.Security.Cryptography.SHA256Managed();
+            var hash = new System.Text.StringBuilder();
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(Password));
+            foreach (byte theByte in crypto)
+            {
+                hash.Append(theByte.ToString("x2"));
+            }
+            return hash.ToString();
+        }
+
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -100,6 +119,7 @@ namespace CookingHeaven.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+                
                 }
                 foreach (var error in result.Errors)
                 {
